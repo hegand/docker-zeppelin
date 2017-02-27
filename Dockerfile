@@ -3,6 +3,7 @@ FROM hegand/spark-base:1.6-hadoop2.6
 ENV ZEPPELIN_VERSION 0.7.0
 ENV ZEPPELIN_FULL_VERSION zeppelin-${ZEPPELIN_VERSION}
 ENV ZEPPELIN_HOME /usr/local/zeppelin
+ENV PATH $PATH:$ZEPPELIN_HOME/bin
 
 RUN adduser -D -s /bin/bash -u 1210 zeppelin
 
