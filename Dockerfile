@@ -1,4 +1,4 @@
-FROM hegand/spark-base:1.6
+FROM hegand/spark-base:1.6-full-stack-2.7
 
 ENV ZEPPELIN_VERSION 0.7.0
 ENV ZEPPELIN_FULL_VERSION zeppelin-${ZEPPELIN_VERSION}
@@ -14,5 +14,7 @@ RUN set -x && \
     mv ${ZEPPELIN_FULL_VERSION}-bin-netinst /usr/local && \
     ln -s /usr/local/${ZEPPELIN_FULL_VERSION}-bin-netinst ${ZEPPELIN_HOME} && \
     chown -R zeppelin:zeppelin ${ZEPPELIN_HOME}/
+    
+RUN ${ZEPPELIN_HOME}/bin/install-interpreter.sh --name md,shell,jdbc,python
     
 WORKDIR ${ZEPPELIN_HOME}
